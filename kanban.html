@@ -1,0 +1,48 @@
+<style>
+    body { font-family: Segoe UI; }
+    .col { width:30%; float:left; padding:10px; }
+    .box { border:1px solid #000; margin:5px; padding:5px; }
+    </style>
+    
+    <div class="col"><h3>A Fazer</h3><div id="a fazer"></div></div>
+    <div class="col"><h3>Fazendo</h3><div id="fazendo"></div></div>
+    <div class="col"><h3>Pronto</h3><div id="pronto"></div></div>
+    
+    <script>
+    async function load(){
+        const res = await fetch('http://localhost:3000/tarefas');
+        const tarefas = await res.json();
+    
+        tarefas.forEach(t=>{
+            const div = document.createElement('div');
+            div.className='box';
+            div.innerHTML=`
+            ${t.descricao} <br>
+            ${t.usuario} <br>
+            ${t.prioridade} <br>
+            <button onclick="status(${t.id},'fazendo')">→</button>
+            <button onclick="del(${t.id})">X</button>
+            `;
+    
+            document.getElementById(t.status).appendChild(div);
+        });
+    }
+    
+    async function status(id, st){
+        await fetch(`http://localhost:3000/tarefas/${id}`,{
+            method:'PUT',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({status: st})
+        });
+        location.reload();
+    }
+    
+    async function del(id){
+        if(confirm('Excluir?')){
+            await fetch(`http://localhost:3000/tarefas/${id}`,{method:'DELETE'});
+            location.reload();
+        }
+    }
+    
+    load();
+    </script>

@@ -1,0 +1,45 @@
+<h2>Cadastro de Tarefas</h2>
+
+<form id="form">
+<select id="usuario"></select>
+<input type="text" id="descricao" placeholder="Descrição" required>
+<input type="text" id="setor" placeholder="Setor" required>
+
+<select id="prioridade">
+<option value="baixa">Baixa</option>
+<option value="media">Média</option>
+<option value="alta">Alta</option>
+</select>
+
+<button>Cadastrar</button>
+</form>
+
+<script>
+async function carregarUsuarios(){
+    const res = await fetch('http://localhost:3000/usuarios');
+    const dados = await res.json();
+
+    dados.forEach(u=>{
+        usuario.innerHTML += `<option value="${u.id}">${u.nome}</option>`;
+    });
+}
+
+form.onsubmit = async (e)=>{
+    e.preventDefault();
+
+    await fetch('http://localhost:3000/tarefas',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({
+            id_usuario: usuario.value,
+            descricao: descricao.value,
+            setor: setor.value,
+            prioridade: prioridade.value
+        })
+    });
+
+    alert('Tarefa criada!');
+};
+
+carregarUsuarios();
+</script>

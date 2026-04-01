@@ -1,0 +1,27 @@
+{
+  "name": "bd-uuid",
+  "version": "0.1.0",
+  "description": "bd uuid middleware",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdjs/bd-uuid.git"
+  },
+  "keywords": [
+    "bd",
+    "uuid",
+    "bd-uuid"
+  ],
+  "author": "mdemo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bdjs/bd-uuid/issues"
+  },
+  "homepage": "https://github.com/bdjs/bd-uuid#readme",
+  "dependencies": {
+    "uuid": "^2.0.1"
+  }
+}

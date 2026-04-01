@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "bd": "^0.4.1",
+    "express": "^5.2.1",
+    "mysql2": "^3.20.0",
+    "pg": "^8.20.0"
+  },
+  "name": "simulado-do-saep",
+  "version": "1.0.0",
+  "description": "Pasta para a realização do SAEP",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariasteles/Simulado-do-SAEP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mariasteles/Simulado-do-SAEP/issues"
+  },
+  "homepage": "https://github.com/mariasteles/Simulado-do-SAEP#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
